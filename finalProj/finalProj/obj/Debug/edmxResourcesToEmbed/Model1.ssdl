@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="companyDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="clientID" />
+    </Key>
+    <Property Name="clientID" Type="int" Nullable="false" />
+    <Property Name="clientName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="clientPhone" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="clientFax" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="clientMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="clientSite" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="client_orderDetails">
+    <Key>
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="itemCode" />
+    </Key>
+    <Property Name="orderID" Type="int" Nullable="false" />
+    <Property Name="itemCode" Type="int" Nullable="false" />
+    <Property Name="itemPrice" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="clientOrder">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="int" Nullable="false" />
+    <Property Name="clientID" Type="int" Nullable="false" />
+    <Property Name="stockID" Type="int" Nullable="false" />
+    <Property Name="orderDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="itemCode" />
+    </Key>
+    <Property Name="itemCode" Type="int" Nullable="false" />
+    <Property Name="itemName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="itemModule1" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="itemModule2" Type="nvarchar" MaxLength="10" />
+    <Property Name="expiredDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="manager">
+    <Key>
+      <PropertyRef Name="mangerID" />
+    </Key>
+    <Property Name="mangerID" Type="int" Nullable="false" />
+    <Property Name="managerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="managerPhone" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="managerAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stock">
+    <Key>
+      <PropertyRef Name="stockID" />
+    </Key>
+    <Property Name="stockID" Type="int" Nullable="false" />
+    <Property Name="stockName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="stockAddress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="manegerID" Type="int" />
+  </EntityType>
+  <EntityType Name="stock_item">
+    <Key>
+      <PropertyRef Name="itemCode" />
+      <PropertyRef Name="stockID" />
+    </Key>
+    <Property Name="itemCode" Type="int" Nullable="false" />
+    <Property Name="stockID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="supplierID" />
+    </Key>
+    <Property Name="supplierID" Type="int" Nullable="false" />
+    <Property Name="supplierName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="supplierPhone" Type="nvarchar" MaxLength="11" Nullable="false" />
+    <Property Name="supplierFax" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="supplierMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="supplierSite" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="supplyment_orderDetails">
+    <Key>
+      <PropertyRef Name="orderID" />
+      <PropertyRef Name="itemCode" />
+    </Key>
+    <Property Name="orderID" Type="int" Nullable="false" />
+    <Property Name="itemCode" Type="int" Nullable="false" />
+    <Property Name="itemPrice" Type="int" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="supplymentOrder">
+    <Key>
+      <PropertyRef Name="orderID" />
+    </Key>
+    <Property Name="orderID" Type="int" Nullable="false" />
+    <Property Name="supplierID" Type="int" Nullable="false" />
+    <Property Name="stockID" Type="int" Nullable="false" />
+    <Property Name="orderDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_client_orderDetails_clientOrder">
+    <End Role="clientOrder" Type="Self.clientOrder" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="client_orderDetails" Type="Self.client_orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientOrder">
+        <PropertyRef Name="orderID" />
+      </Principal>
+      <Dependent Role="client_orderDetails">
+        <PropertyRef Name="orderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_client_orderDetails_item">
+    <End Role="item" Type="Self.item" Multiplicity="1" />
+    <End Role="client_orderDetails" Type="Self.client_orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="itemCode" />
+      </Principal>
+      <Dependent Role="client_orderDetails">
+        <PropertyRef Name="itemCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_clientOrder_client">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="clientOrder" Type="Self.clientOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="clientID" />
+      </Principal>
+      <Dependent Role="clientOrder">
+        <PropertyRef Name="clientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_clientOrder_stock">
+    <End Role="stock" Type="Self.stock" Multiplicity="1" />
+    <End Role="clientOrder" Type="Self.clientOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stock">
+        <PropertyRef Name="stockID" />
+      </Principal>
+      <Dependent Role="clientOrder">
+        <PropertyRef Name="stockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stock_item_item">
+    <End Role="item" Type="Self.item" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="stock_item" Type="Self.stock_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="itemCode" />
+      </Principal>
+      <Dependent Role="stock_item">
+        <PropertyRef Name="itemCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stock_item_stock">
+    <End Role="stock" Type="Self.stock" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="stock_item" Type="Self.stock_item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stock">
+        <PropertyRef Name="stockID" />
+      </Principal>
+      <Dependent Role="stock_item">
+        <PropertyRef Name="stockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_stock_manager">
+    <End Role="manager" Type="Self.manager" Multiplicity="0..1" />
+    <End Role="stock" Type="Self.stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="manager">
+        <PropertyRef Name="mangerID" />
+      </Principal>
+      <Dependent Role="stock">
+        <PropertyRef Name="manegerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_supplyment_orderDetails_item">
+    <End Role="item" Type="Self.item" Multiplicity="1" />
+    <End Role="supplyment_orderDetails" Type="Self.supplyment_orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="itemCode" />
+      </Principal>
+      <Dependent Role="supplyment_orderDetails">
+        <PropertyRef Name="itemCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_supplyment_orderDetails_supplymentOrder">
+    <End Role="supplymentOrder" Type="Self.supplymentOrder" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="supplyment_orderDetails" Type="Self.supplyment_orderDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplymentOrder">
+        <PropertyRef Name="orderID" />
+      </Principal>
+      <Dependent Role="supplyment_orderDetails">
+        <PropertyRef Name="orderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_supplymentOrder_stock">
+    <End Role="stock" Type="Self.stock" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="supplymentOrder" Type="Self.supplymentOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="stock">
+        <PropertyRef Name="stockID" />
+      </Principal>
+      <Dependent Role="supplymentOrder">
+        <PropertyRef Name="stockID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_supplymentOrder_supplier">
+    <End Role="supplier" Type="Self.supplier" Multiplicity="1" />
+    <End Role="supplymentOrder" Type="Self.supplymentOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="supplierID" />
+      </Principal>
+      <Dependent Role="supplymentOrder">
+        <PropertyRef Name="supplierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="companyDBModelStoreContainer">
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="client_orderDetails" EntityType="Self.client_orderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="clientOrder" EntityType="Self.clientOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="manager" EntityType="Self.manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stock" EntityType="Self.stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stock_item" EntityType="Self.stock_item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="supplier" EntityType="Self.supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="supplyment_orderDetails" EntityType="Self.supplyment_orderDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="supplymentOrder" EntityType="Self.supplymentOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_client_orderDetails_clientOrder" Association="Self.FK_client_orderDetails_clientOrder">
+      <End Role="clientOrder" EntitySet="clientOrder" />
+      <End Role="client_orderDetails" EntitySet="client_orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_client_orderDetails_item" Association="Self.FK_client_orderDetails_item">
+      <End Role="item" EntitySet="item" />
+      <End Role="client_orderDetails" EntitySet="client_orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_clientOrder_client" Association="Self.FK_clientOrder_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="clientOrder" EntitySet="clientOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_clientOrder_stock" Association="Self.FK_clientOrder_stock">
+      <End Role="stock" EntitySet="stock" />
+      <End Role="clientOrder" EntitySet="clientOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stock_item_item" Association="Self.FK_stock_item_item">
+      <End Role="item" EntitySet="item" />
+      <End Role="stock_item" EntitySet="stock_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stock_item_stock" Association="Self.FK_stock_item_stock">
+      <End Role="stock" EntitySet="stock" />
+      <End Role="stock_item" EntitySet="stock_item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_stock_manager" Association="Self.FK_stock_manager">
+      <End Role="manager" EntitySet="manager" />
+      <End Role="stock" EntitySet="stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_supplyment_orderDetails_item" Association="Self.FK_supplyment_orderDetails_item">
+      <End Role="item" EntitySet="item" />
+      <End Role="supplyment_orderDetails" EntitySet="supplyment_orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_supplyment_orderDetails_supplymentOrder" Association="Self.FK_supplyment_orderDetails_supplymentOrder">
+      <End Role="supplymentOrder" EntitySet="supplymentOrder" />
+      <End Role="supplyment_orderDetails" EntitySet="supplyment_orderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_supplymentOrder_stock" Association="Self.FK_supplymentOrder_stock">
+      <End Role="stock" EntitySet="stock" />
+      <End Role="supplymentOrder" EntitySet="supplymentOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_supplymentOrder_supplier" Association="Self.FK_supplymentOrder_supplier">
+      <End Role="supplier" EntitySet="supplier" />
+      <End Role="supplymentOrder" EntitySet="supplymentOrder" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

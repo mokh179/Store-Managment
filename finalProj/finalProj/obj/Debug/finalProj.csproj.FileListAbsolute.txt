@@ -1,0 +1,40 @@
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\bin\Debug\finalProj.exe.config
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\bin\Debug\finalProj.exe
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\bin\Debug\finalProj.pdb
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\obj\Debug\finalProj.csprojAssemblyReference.cache
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\obj\Debug\finalProj.Form1.resources
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\obj\Debug\finalProj.Properties.Resources.resources
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\obj\Debug\finalProj.csproj.GenerateResource.cache
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\obj\Debug\finalProj.csproj.CoreCompileInputs.cache
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\obj\Debug\finalProj.exe
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\obj\Debug\finalProj.pdb
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\bin\Debug\EntityFramework.dll
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\bin\Debug\EntityFramework.SqlServer.dll
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\bin\Debug\EntityFramework.xml
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\bin\Debug\EntityFramework.SqlServer.xml
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\obj\Debug\finalProj.main.resources
+D:\ITI\Programming\Data Access\Project\New folder\finalProj\finalProj\obj\Debug\finalProj.csproj.CopyComplete
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\bin\Debug\finalProj.exe.config
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\bin\Debug\finalProj.exe
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\bin\Debug\finalProj.pdb
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\bin\Debug\EntityFramework.dll
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\bin\Debug\EntityFramework.SqlServer.dll
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\bin\Debug\EntityFramework.xml
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\bin\Debug\EntityFramework.SqlServer.xml
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.csprojAssemblyReference.cache
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.Form1.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.main.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.Properties.Resources.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.csproj.GenerateResource.cache
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.csproj.CoreCompileInputs.cache
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.csproj.CopyComplete
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.exe
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.pdb
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.Items.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.suppliers.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.clients.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.stocks.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.s_Orders.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.c_orders.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.Reports.resources
+D:\ITI\Programming\Data Access\Project\finalProj\finalProj\obj\Debug\finalProj.Movements.resources
